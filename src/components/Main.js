@@ -1,18 +1,20 @@
 function Main() {
-  function handleEditAvatarClick(evt) {
-    console.log(evt);
+  function handleEditAvatarClick() {
+    const popupUpdateAvatar = document.querySelector('.popup_update-avatar');
+    popupUpdateAvatar.classList.add('popup_opened');
   }
 
-  function handleEditProfileClick(evt) {
-    console.log(evt);
+  function handleEditProfileClick() {
+    const popupEditProfile = document.querySelector('.popup_profile');
+    popupEditProfile.classList.add('popup_opened');
   }
 
-  function handleAddPlaceClick(evt) {
-    console.log(evt);
+  function handleAddPlaceClick() {
+    const popupAddCard = document.querySelector('.popup_add-card');
+    popupAddCard.classList.add('popup_opened');
   }
 
   return (
-  <>
     <main>
       <section className="profile">
         <button
@@ -42,7 +44,6 @@ function Main() {
         <ul className="element-grid"></ul>
       </section>
     </main>
-  </>
   );
 }
   
