@@ -1,18 +1,22 @@
-function Main() {
-  function handleEditAvatarClick() {
-    const popupUpdateAvatar = document.querySelector('.popup_update-avatar');
-    popupUpdateAvatar.classList.add('popup_opened');
-  }
+import React from "react";
+import api from "../utils/Api";
 
-  function handleEditProfileClick() {
-    const popupEditProfile = document.querySelector('.popup_profile');
-    popupEditProfile.classList.add('popup_opened');
-  }
+function Main(props) {
+  const [ userName, setUserName ] = React.useState('');
+  const [ userDescription , setUserDescription ] = React.useState('');
+  const [ userAvatar, setUserAvatar] = React.useState('');
 
-  function handleAddPlaceClick() {
-    const popupAddCard = document.querySelector('.popup_add-card');
-    popupAddCard.classList.add('popup_opened');
-  }
+  React.useEffect(() => {
+    api.getUserInfo()
+    .then(res => {
+      setUserName(res.name);
+      setUserDescription(res.about);
+      setUserAvatar(res.avatar);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
 
   return (
     <main>
@@ -21,23 +25,24 @@ function Main() {
           type="button"
           aria-label="Обновить аватар"
           className="profile__avatar"
-          onClick={handleEditAvatarClick}
+          onClick={props.onEditAvatar}
+          style={{ backgroundImage: `url(${userAvatar})`}}
         />
         <div className="profile__info">
-          <h1 className="profile__info-title">Жак-Ив Кусто</h1>
+          <h1 className="profile__info-title">{userName}</h1>
           <button
             type="button"
             aria-label="Редактировать профиль"
             className="profile__edit-button"
-            onClick={handleEditProfileClick}
+            onClick={props.onEditProfile}
           />
-          <p className="profile__info-subtitle">Исследователь океана</p>
+          <p className="profile__info-subtitle">{userDescription}</p>
         </div>
         <button
           type="button"
           aria-label="Добавить карточку"
           className="profile__add-card"
-          onClick={handleAddPlaceClick}
+          onClick={props.onAddPlace}
         />
       </section>
       <section className="elements">

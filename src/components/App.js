@@ -1,4 +1,5 @@
 import "../index.css";
+import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -6,16 +7,44 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup"
 
 function App() {
+  const [ isEditAvatarPopupOpen, setIsEditAvatarPopupOpen ] = React.useState(false);
+  const [ isEditProfilePopupOpen, setIsEditProfilePopupOpen ] = React.useState(false);
+  const [ isAddPlacePopupOpen, setIsAddPlacePopupOpen ] = React.useState(false);
+
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
+
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(true);
+  }
+
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(true);
+  }
+
+  function closeAllPopups() {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
+
   return (
     <div className="page">
       <Header />
-      <Main />
+      <Main 
+        onEditAvatar={handleEditAvatarClick}
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+      />
       <Footer />
       <PopupWithForm 
         name="update-avatar"
         title="Обновить аватар"
         ariaLabel="Сохранить"
         textButton="Сохранить"
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
       >
         <input
           name="avatar-name"
@@ -32,6 +61,8 @@ function App() {
         title="Редактировать профиль"
         ariaLabel="Сохранить"
         textButton="Сохранить"
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
       >
         <input
           name="profile-name"
@@ -61,6 +92,8 @@ function App() {
         title="Новое место"
         ariaLabel="Создать"
         textButton="Создать"
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
       >
         <input
           name="item-name"
@@ -88,11 +121,11 @@ function App() {
         title="Вы уверены?"
         ariaLabel="Да"
         textButton="Да"
+        onClose={closeAllPopups}
       >
       </PopupWithForm>
 
       <ImagePopup />
-
 
 
 

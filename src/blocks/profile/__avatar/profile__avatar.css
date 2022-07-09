@@ -13,8 +13,8 @@
 .profile__avatar:hover::after {
   position: absolute;
   content: '';
-  height: 120px;
-  width: 120px;
+  height: 100%;
+  width: 100%;
   background: no-repeat center url(../../../images/avatar-cursor.svg);
   background-size: 26px 26px;
   background-color: rgba(0, 0, 0, .8);
