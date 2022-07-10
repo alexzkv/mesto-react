@@ -38,13 +38,16 @@ function App() {
   return (
     <div className="page">
       <Header />
+
       <Main 
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onCardClick={handleCardClick}
       />
+
       <Footer />
+
       <PopupWithForm 
         name="update-avatar"
         title="Обновить аватар"
@@ -63,6 +66,7 @@ function App() {
         />
         <span id="avatar-link-error" className="popup__error"></span>
       </PopupWithForm>
+
       <PopupWithForm
         name="profile"
         title="Редактировать профиль"
@@ -94,6 +98,7 @@ function App() {
         />
         <span id="input-about-error" className="popup__error"></span>
       </PopupWithForm>
+
       <PopupWithForm
         name="add-card"
         title="Новое место"
@@ -123,6 +128,7 @@ function App() {
         />
         <span id="card-link-error" className="popup__error"></span>
       </PopupWithForm>
+
       <PopupWithForm className="popup popup_type_confirm"
         name="confirm"
         title="Вы уверены?"
@@ -137,6 +143,7 @@ function App() {
         card={selectedCard}
         onClose={closeAllPopups}
       />
+      
     </div>  
   );
 }

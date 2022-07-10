@@ -1,4 +1,5 @@
 function ImagePopup(props) {
+  
   return (
     <div className={props.card ? `popup popup_type_${props.name} popup_opened` : `popup`}>
       <div className="popup__container popup__container_open_img">
@@ -14,11 +15,11 @@ function ImagePopup(props) {
             alt={props.card ? props.card.name : "null"} 
             className="popup__image"
           />
-          <figcaption className="popup__image-title" />
+          <figcaption className="popup__image-title"/>
         </figure>
       </div>
     </div>
-  )
+  );
 }
 
 export default ImagePopup;

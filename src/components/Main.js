@@ -3,37 +3,37 @@ import api from "../utils/Api";
 import Card from "./Card";
 
 function Main(props) {
-  const [ userName, setUserName ] = React.useState('');
-  const [ userDescription , setUserDescription ] = React.useState('');
-  const [ userAvatar, setUserAvatar] = React.useState('');
+  const [ userName, setUserName ] = React.useState("");
+  const [ userDescription , setUserDescription ] = React.useState("");
+  const [ userAvatar, setUserAvatar] = React.useState("");
   const [ cards, setcards] = React.useState([]);
 
   React.useEffect(() => {
     api.getUserInfo()
-    .then(res => {
-      setUserName(res.name);
-      setUserDescription(res.about);
-      setUserAvatar(res.avatar);
+      .then(res => {
+        setUserName(res.name);
+        setUserDescription(res.about);
+        setUserAvatar(res.avatar);
       })
       .catch(err => {
         console.log(err);
-      })
+      });
   }, []);
 
   React.useEffect(() => {
     api.getCards()
-    .then(res => {
-      setcards(res);
+      .then(res => {
+        setcards(res);
       })
       .catch(err => {
         console.log(err);
-      })
+      });
   });
 
   return (
     <main>
       <section className="profile">
-        <button
+        <div
           type="button"
           aria-label="Обновить аватар"
           className="profile__avatar"
@@ -59,15 +59,15 @@ function Main(props) {
       </section>
       <section className="elements">
         <ul className="element-grid">
-          { cards.map((item) => {
+          {cards.map((item) => {
             return (
               <Card 
                 key={item._id}
                 card={item}
                 onCardClick={props.onCardClick}
               />
-            )
-          }) }
+            );
+          })}
         </ul>
       </section>
     </main>
