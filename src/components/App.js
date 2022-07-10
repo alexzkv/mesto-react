@@ -81,8 +81,8 @@ function App() {
           type="text"
           placeholder="Имя"
           required
-          minLength="{2}"
-          maxLength="{40}"
+          minLength={2}
+          maxLength={40}
           className="popup__input popup__input_profile_name"
         />
         <span id="input-name-error" className="popup__error"></span>
@@ -92,8 +92,8 @@ function App() {
           type="text"
           placeholder="О себе"
           required
-          minLength="{2}"
-          maxLength="{200}"
+          minLength={2}
+          maxLength={200}
           className="popup__input popup__input_profile_about"
         />
         <span id="input-about-error" className="popup__error"></span>
@@ -113,8 +113,8 @@ function App() {
           type="text"
           placeholder="Название"
           required
-          minLength="{2}"
-          maxLength="{30}"
+          minLength={2}
+          maxLength={30}
           className="popup__input popup__input_card_name"
         />
         <span id="card-name-error" className="popup__error"></span>
