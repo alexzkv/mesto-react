@@ -1,4 +1,4 @@
-# Проект React App: Место :globe_with_meridians:
+# React App: Место :globe_with_meridians:
 
 Проект был запущен с помощью [Create React App](https://github.com/facebook/create-react-app ).
 
@@ -15,4 +15,6 @@
 - _БЭМ Nested_
 - _API_
 
+## URL:
+https://alexzkv.github.io/mesto-react/
 
