@@ -63,9 +63,8 @@ function Main(props) {
             return (
               <Card 
                 key={item._id}
-                src={item.link} 
-                alt={item.name}
-                title={item.name}
+                card={item}
+                onCardClick={props.onCardClick}
               />
             )
           }) }

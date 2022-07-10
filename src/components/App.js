@@ -10,7 +10,7 @@ function App() {
   const [ isEditAvatarPopupOpen, setIsEditAvatarPopupOpen ] = React.useState(false);
   const [ isEditProfilePopupOpen, setIsEditProfilePopupOpen ] = React.useState(false);
   const [ isAddPlacePopupOpen, setIsAddPlacePopupOpen ] = React.useState(false);
-  // const [ selectedCard, setSelectedCard ] = React.useState(false);
+  const [ selectedCard, setSelectedCard ] = React.useState(null);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -28,12 +28,12 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    // setSelectedCard(false);
+    setSelectedCard(null);
   }
 
-  // function handleCardClick() {
-  //   setSelectedCard(true);
-  // }
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  }
 
   return (
     <div className="page">
@@ -42,6 +42,7 @@ function App() {
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
       <PopupWithForm 
@@ -131,25 +132,11 @@ function App() {
       >
       </PopupWithForm>
 
-      <ImagePopup />
-
-
-
-
-      <template className="card-template" />
-      <div className="popup popup_open-card">
-        <div className="popup__container popup__container_open_img">
-          <button
-            type="button"
-            aria-label="Закрыть форму"
-            className="popup__close"
-          />
-          <figure className="popup__big-img">
-            <img src="#" alt="#" className="popup__image" />
-            <figcaption className="popup__image-title" />
-          </figure>
-        </div>
-      </div>
+      <ImagePopup
+        name={"open-card"}
+        card={selectedCard}
+        onClose={closeAllPopups}
+      />
     </div>  
   );
 }
