@@ -1,20 +1,20 @@
-# React App: Место :globe_with_meridians:
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Lora&size=35&color=000000&width=550&lines=React+App%3A+%D0%9C%D0%B5%D1%81%D1%82%D0%BE)](https://git.io/typing-svg)
 
 Проект был запущен с помощью [Create React App](https://github.com/facebook/create-react-app ).
 
-## Стек
-- _HTML_
-- _CSS_
-- _JavaScript_
-- _React_
+[Ссылка на макет проекта в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-## Реализация
-- _Flexbox-вёрстка_
-- _Grid Layout_
-- _Медиазапросы_
-- _БЭМ Nested_
-- _API_
+__Стек__
+- HTML
+- CSS
+- JavaScript
+- React
 
-## URL:
-https://alexzkv.github.io/mesto-react/
+__Реализация__
+- Flexbox-вёрстка
+- Grid Layout
+- Медиазапросы
+- БЭМ Nested
+- API
+
 
