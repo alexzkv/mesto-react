@@ -11,8 +11,8 @@ function ImagePopup(props) {
         />
         <figure className="popup__big-img">
           <img 
-            src={props.card ? props.card.link : "null"}
-            alt={props.card ? props.card.name : "null"}
+            src={props.card ? props.card.link : ""}
+            alt={props.card ? props.card.name : ""}
             className="popup__image"
           />
           <p className="popup__image-title">{props.card ? props.card.name : ""}</p>
