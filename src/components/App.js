@@ -6,6 +6,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
+import EditProfilePopup from "./EditProfilePopup";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function App() {
@@ -101,37 +102,6 @@ function App() {
           <span id="avatar-link-error" className="popup__error"></span>
         </PopupWithForm>
         <PopupWithForm
-          name="profile"
-          title="Редактировать профиль"
-          ariaLabel="Сохранить"
-          textButton="Сохранить"
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-        >
-          <input
-            name="profile-name"
-            id="input-name"
-            type="text"
-            placeholder="Имя"
-            required
-            minLength={2}
-            maxLength={40}
-            className="popup__input popup__input_profile_name"
-          />
-          <span id="input-name-error" className="popup__error"></span>
-          <input
-            name="profile-about"
-            id="input-about"
-            type="text"
-            placeholder="О себе"
-            required
-            minLength={2}
-            maxLength={200}
-            className="popup__input popup__input_profile_about"
-          />
-          <span id="input-about-error" className="popup__error"></span>
-        </PopupWithForm>
-        <PopupWithForm
           name="add-card"
           title="Новое место"
           ariaLabel="Создать"
@@ -160,7 +130,6 @@ function App() {
           />
           <span id="card-link-error" className="popup__error"></span>
         </PopupWithForm>
-
         <PopupWithForm className="popup popup_type_confirm"
           name="confirm"
           title="Вы уверены?"
@@ -169,12 +138,12 @@ function App() {
           onClose={closeAllPopups}
         >
         </PopupWithForm>
-
         <ImagePopup
           name={"open-card"}
           card={selectedCard}
           onClose={closeAllPopups}
         />
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
       </CurrentUserContext.Provider>
     </div>  
   );
