@@ -1,8 +1,4 @@
 class Api {
-  _baseUrl
-  _token
-  _headers
-
   constructor(baseUrl, token) {
     this._baseUrl = baseUrl;
     this._token = token;
@@ -12,11 +8,8 @@ class Api {
     }
   }
 
-  _сheckServerResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject('Ошибка');
+  _сheckServerResponse = (res) => {
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
   }
 
   getUserInfo() {
@@ -74,18 +67,10 @@ class Api {
     .then(this._сheckServerResponse);
   }
 
-  likeCard(_id) {
+  changeLikeCardStatus(_id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
       headers: this._headers,
-      method: 'PUT'
-    })
-    .then(this._сheckServerResponse);
-  }
-
-  dislikeCard(_id) {
-    return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
-      headers: this._headers,
-      method: 'DELETE'
+      method: isLiked ? 'DELETE' : 'PUT'
     })
     .then(this._сheckServerResponse);
   }

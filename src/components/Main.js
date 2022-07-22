@@ -1,22 +1,16 @@
-import React from "react";
-import api from "../utils/Api";
+import { useContext } from "react";
 import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Main(props) {
-  const [ cards, setcards] = React.useState([]);
-  const currentUser = React.useContext(CurrentUserContext);
-
-  React.useEffect(() => {
-    api.getCards()
-      .then(res => {
-        setcards(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
-
+function Main({ 
+  onEditAvatar, 
+  onEditProfile, 
+  onAddPlace, 
+  cards, 
+  onCardClick, 
+  onCardLike, 
+  onCardDelete }) {
+  const currentUser = useContext(CurrentUserContext);
   return (
     <main>
       <section className="profile">
@@ -24,7 +18,7 @@ function Main(props) {
           type="button"
           aria-label="Обновить аватар"
           className="profile__avatar"
-          onClick={props.onEditAvatar}
+          onClick={onEditAvatar}
           style={{backgroundImage: `url(${currentUser.avatar})`}}
         />
         <div className="profile__info">
@@ -33,7 +27,7 @@ function Main(props) {
             type="button"
             aria-label="Редактировать профиль"
             className="profile__edit-button"
-            onClick={props.onEditProfile}
+            onClick={onEditProfile}
           />
           <p className="profile__info-subtitle">{currentUser.about}</p>
         </div>
@@ -41,7 +35,7 @@ function Main(props) {
           type="button"
           aria-label="Добавить карточку"
           className="profile__add-card"
-          onClick={props.onAddPlace}
+          onClick={onAddPlace}
         />
       </section>
       <section className="elements">
@@ -51,7 +45,9 @@ function Main(props) {
               <Card 
                 key={item._id}
                 card={item}
-                onCardClick={props.onCardClick}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
               />
             );
           })}
