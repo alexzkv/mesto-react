@@ -42,7 +42,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
       />
       <div className="card__description">
         <p className="card__title">{card.name}</p>
-        <a href="/" className="card__like-box">
+        <div className="card__like-box">
           <button
             type="button"
             aria-label="Лайкнуть сердечко"
@@ -52,7 +52,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
           <span className="card__like-count">
             {card.likes.length}
           </span>
-        </a>
+        </div>
       </div>
     </li>
   );
