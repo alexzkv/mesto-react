@@ -2,22 +2,32 @@ import { useState, useContext, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function EditProfilePopup({ isOpen, onClose, onSubmit  }) {
+function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
   const[name, setName] = useState("");
   const[description, setDescription] = useState("");
 
- useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser?.name);
+      setDescription(currentUser?.about);
+    }
   }, [currentUser]);
 
   function handleChangeName(e) {
-    setName(e.target.name);
+    setName(e.target.value);
   }
 
   function handleChangeDescription(e) {
-    setDescription(e.target.description);
+    setDescription(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onUpdateUser({
+      name,
+      about: description,
+    });
   }
 
   return (
@@ -28,7 +38,7 @@ function EditProfilePopup({ isOpen, onClose, onSubmit  }) {
       textButton="Сохранить"
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     >
       <input
         name="profile-name"
@@ -38,8 +48,9 @@ function EditProfilePopup({ isOpen, onClose, onSubmit  }) {
         required
         minLength={2}
         maxLength={40}
+        value={name} 
+        onChange={handleChangeName}
         className="popup__input popup__input_profile_name"
-        value={name} onChange={handleChangeName}
       />
       <span id="input-name-error" className="popup__error"></span>
       <input
@@ -50,8 +61,9 @@ function EditProfilePopup({ isOpen, onClose, onSubmit  }) {
         required
         minLength={2}
         maxLength={200}
+        value={description} 
+        onChange={handleChangeDescription}
         className="popup__input popup__input_profile_about"
-        value={description} onChange={handleChangeDescription}
       />
       <span id="input-about-error" className="popup__error"></span>
     </PopupWithForm>

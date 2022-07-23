@@ -19,17 +19,17 @@ function Main({
           aria-label="Обновить аватар"
           className="profile__avatar"
           onClick={onEditAvatar}
-          style={{backgroundImage: `url(${currentUser.avatar})`}}
+          style={{backgroundImage: `url(${currentUser?.avatar})`}}
         />
         <div className="profile__info">
-          <h1 className="profile__info-title">{currentUser.name}</h1>
+          <h1 className="profile__info-title">{currentUser?.name}</h1>
           <button
             type="button"
             aria-label="Редактировать профиль"
             className="profile__edit-button"
             onClick={onEditProfile}
           />
-          <p className="profile__info-subtitle">{currentUser.about}</p>
+          <p className="profile__info-subtitle">{currentUser?.about}</p>
         </div>
         <button
           type="button"
