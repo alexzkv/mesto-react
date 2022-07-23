@@ -46,11 +46,11 @@ class Api {
     .then(this._сheckServerResponse);
   }
 
-  addCard(body) {
+  setCard(card) {
     return fetch(`${this._baseUrl}cards`, {
       headers: this._headers,
       method: 'POST',
-      body: JSON.stringify(body)
+      body: JSON.stringify({ link: card.link, name: card.name })
     })
     .then(this._сheckServerResponse);
   }

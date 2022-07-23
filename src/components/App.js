@@ -8,6 +8,7 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function App() {
@@ -19,10 +20,7 @@ function App() {
   const [ cards, setCards] = useState([]);
 
   useEffect(() => {
-    Promise.all([
-      api.getUserInfo(),
-      api.getCards()
-    ])
+    Promise.all([api.getUserInfo(), api.getCards()])
       .then(([userInfo, cards]) => {
         setCurrentUser(userInfo);
         setCards(cards);
@@ -77,6 +75,15 @@ function App() {
       .catch(err => console.log(err));
   }
 
+  function handleAddPlaceSubmit(item) {
+    api.setCard(item)
+    .then((newCard) => {
+      setCards([...cards, newCard]);
+      closeAllPopups();
+    })
+    .catch(err => console.log(err));
+  }
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -91,36 +98,9 @@ function App() {
           cards={cards}
         />
         <Footer />
-        <PopupWithForm
-          name="add-card"
-          title="Новое место"
-          ariaLabel="Создать"
-          textButton="Создать"
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-        >
-          <input
-            name="item-name"
-            id="card-name"
-            type="text"
-            placeholder="Название"
-            required
-            minLength={2}
-            maxLength={30}
-            className="popup__input popup__input_card_name"
-          />
-          <span id="card-name-error" className="popup__error"></span>
-          <input
-            name="item-link"
-            id="card-link"
-            type="url"
-            placeholder="Ссылка на картинку"
-            required
-            className="popup__input popup__input_card_link"
-          />
-          <span id="card-link-error" className="popup__error"></span>
-        </PopupWithForm>
-        <PopupWithForm className="popup popup_type_confirm"
+        
+        <PopupWithForm 
+          className="popup popup_type_confirm"
           name="confirm"
           title="Вы уверены?"
           ariaLabel="Да"
@@ -142,6 +122,11 @@ function App() {
           isOpen={isEditAvatarPopupOpen} 
           onClose={closeAllPopups} 
           onUpdateAvatar={handleUpdateAvatar}
+        />
+        <AddPlacePopup
+          isOpen={isAddPlacePopupOpen} 
+          onClose={closeAllPopups} 
+          onAddPlace={handleAddPlaceSubmit}
         />
       </CurrentUserContext.Provider>
     </div>  
