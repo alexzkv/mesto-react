@@ -1,26 +1,16 @@
-import { useState, useContext, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
-import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
-  const currentUser = useContext(CurrentUserContext);
-  const[avatar, setAvatar] = useState("");
+  const avatarRef = useRef();
 
   useEffect(() => {
-    if (currentUser) {
-      setAvatar(currentUser?.avatar);
-    }
-  }, [currentUser]);
-
-  function handleChangeAvatar(e) {
-    setAvatar(e.target.value);
-  }
+    avatarRef.current.value = "";
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar({
-      avatar
-    });
+    onUpdateAvatar({ avatar: avatarRef.current.value });
   }
 
   return (
@@ -39,8 +29,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
         type="url"
         placeholder="Ссылка на новый аватар"
         required
-
-        onChange={handleChangeAvatar}
+        ref={avatarRef}
         className="popup__input popup__input_update_avatar"
       />
       <span id="avatar-link-error" className="popup__error"></span>

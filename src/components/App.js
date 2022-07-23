@@ -30,27 +30,16 @@ function App() {
       .catch(err => console.log(err));
   }, []);
 
-  function handleEditAvatarClick() {
-    setIsEditAvatarPopupOpen(true);
-  }
-
-  function handleEditProfileClick() {
-    setIsEditProfilePopupOpen(true);
-  }
-
-  function handleAddPlaceClick() {
-    setIsAddPlacePopupOpen(true);
-  }
-
+  function handleEditAvatarClick() { setIsEditAvatarPopupOpen(true) }
+  function handleEditProfileClick() { setIsEditProfilePopupOpen(true) }
+  function handleAddPlaceClick() { setIsAddPlacePopupOpen(true) }
+  function handleCardClick(card) { setSelectedCard(card) }
+  
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard(null);
-  }
-
-  function handleCardClick(card) {
-    setSelectedCard(card);
   }
 
   function handleCardLike(card) {
@@ -71,7 +60,7 @@ function App() {
   }
 
   function handleUpdateUser({ name, about }) {
-    api.updateInfo({ name, about })
+    api.setUserInfo({ name, about })
       .then((userInfo) => {
         setCurrentUser(userInfo);
         closeAllPopups();
@@ -80,7 +69,7 @@ function App() {
   }
 
   function handleUpdateAvatar({ avatar }) {
-    api.updateAvatar({ avatar })
+    api.setUserAvatar({ avatar })
       .then((userInfo) => {
         setCurrentUser(userInfo);
         closeAllPopups();

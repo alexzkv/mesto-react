@@ -20,24 +20,20 @@ class Api {
     .then(this._сheckServerResponse);
   }
 
-  updateInfo({ name, about }) {
+  setUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}users/me`, {
       headers: this._headers,
       method: 'PATCH',
-      body: JSON.stringify({
-        name,
-        about
-      })
+      body: JSON.stringify({ name, about })
     })
     .then(this._сheckServerResponse);
   }
 
-  updateAvatar(url) {
-    const body = {avatar: url};
+  setUserAvatar(url) {
     return fetch(`${this._baseUrl}users/me/avatar`, {
       headers: this._headers,
       method: 'PATCH',
-      body: JSON.stringify(body)
+      body: JSON.stringify(url)
     })
     .then(this._сheckServerResponse);
   }
