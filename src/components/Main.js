@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Main({ 
+export default function Main({ 
   onEditAvatar, 
   onEditProfile, 
   onAddPlace, 
@@ -57,5 +57,3 @@ function Main({
     </main>
   );
 }
-  
-export default Main;
