@@ -26,7 +26,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoad
       name="profile"
       title="Редактировать профиль"
       ariaLabel="Сохранить"
-      textButton={isLoading ? 'Сохранение...' : 'Сохранить'}
+      textButton={isLoading ? "Сохранение..." : "Создать"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

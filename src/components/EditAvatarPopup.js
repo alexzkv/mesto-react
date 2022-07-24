@@ -18,7 +18,7 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoa
       name="update-avatar"
       title="Обновить аватар"
       ariaLabel="Сохранить"
-      textButton={isLoading ? 'Сохранение...' : 'Сохранить'}
+      textButton={isLoading ? "Сохранение..." : "Создать"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

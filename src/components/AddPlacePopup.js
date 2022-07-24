@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
-import CurrentUserContext from "../contexts/CurrentUserContext";
 
 export default function AddPlacePopup({ 
   isOpen, 
@@ -8,16 +7,15 @@ export default function AddPlacePopup({
   onAddPlace, 
   isLoading 
 }) {
-  const currentUser = useContext(CurrentUserContext);
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    if (currentUser) {
-      setLink(currentUser?.link);
-      setTitle(currentUser?.title);
+    if (isOpen) {
+      setLink("");
+      setTitle("");
     }
-  }, [currentUser, isOpen]);
+  }, [isOpen]);
 
   function handleChangeLink(e) { setLink(e.target.value) }
   function handleChangeTitle(e) { setTitle(e.target.value) }
@@ -31,7 +29,7 @@ export default function AddPlacePopup({
       name="add-card"
       title="Новое место"
       ariaLabel="Создать"
-      textButton={isLoading ? 'Сохранение...' : 'Создать'}
+      textButton={isLoading ? "Сохранение..." : "Создать"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
