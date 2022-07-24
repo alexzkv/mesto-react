@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
@@ -26,10 +26,11 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       name="add-card"
       title="Новое место"
       ariaLabel="Создать"
-      textButton="Создать"
+      textButton={isLoading ? 'Сохранение...' : 'Создать'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <input
         name="item-name"
