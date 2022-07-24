@@ -98,7 +98,6 @@ function App() {
           cards={cards}
         />
         <Footer />
-        
         <PopupWithForm 
           className="popup popup_type_confirm"
           name="confirm"

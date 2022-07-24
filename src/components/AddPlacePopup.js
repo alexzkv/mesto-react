@@ -51,7 +51,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       />
       <span id="card-link-error" className="popup__error"></span>
     </PopupWithForm>
-  )
+  );
 }
 
 export default AddPlacePopup;

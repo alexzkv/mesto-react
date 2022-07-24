@@ -8,7 +8,7 @@ class Api {
     }
   }
 
-  _сheckServerResponse = (res) => {
+  _сheckServerResponse(res) {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
   }
 
@@ -46,11 +46,11 @@ class Api {
     .then(this._сheckServerResponse);
   }
 
-  setCard(card) {
+  setCard({ link, name }) {
     return fetch(`${this._baseUrl}cards`, {
       headers: this._headers,
       method: 'POST',
-      body: JSON.stringify({ link: card.link, name: card.name })
+      body: JSON.stringify({ link: link, name: name })
     })
     .then(this._сheckServerResponse);
   }
