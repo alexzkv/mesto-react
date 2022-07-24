@@ -40,6 +40,23 @@ function App() {
     setSelectedCard(null);
   }
 
+  const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen ||
+  isAddPlacePopupOpen || selectedCard;
+
+  useEffect(() => {
+    function closeByEscape(evt) {
+      if(evt.key === 'Escape') {
+        closeAllPopups();
+      }
+    }
+    if(isOpen) {
+      document.addEventListener('keydown', closeByEscape);
+      return () => {
+        document.removeEventListener('keydown', closeByEscape);
+      }
+    }
+  }, [isOpen]) 
+
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked)
