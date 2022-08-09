@@ -10,7 +10,7 @@
 
 Установка и запуск
 
-```git clone``` - клонирование проекта
+```git clone https://github.com/alexzkv/mesto-react.git``` - клонирование проекта
 
 ```npm i``` - установка зависимостей
 
