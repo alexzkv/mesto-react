@@ -8,8 +8,6 @@
 
 Запускаем проект с помощью [Create React App](https://github.com/facebook/create-react-app ).
 
-Установка и запуск
-
 ```git clone https://github.com/alexzkv/mesto-react.git``` - клонирование проекта
 
 ```npm i``` - установка зависимостей
