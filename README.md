@@ -2,21 +2,17 @@
 
 Одностраничный сайт адаптированный под все типы устройств с возможностью делиться своими фотографиями.
 
-[Ссылка на макет проекта в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+[Ссылка на макет проекта в Figma](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9?node-id=0%3A1)
 
 ***
 
-Проект был запущен с помощью [Create React App](https://github.com/facebook/create-react-app ).
+Запускаем проект с помощью [Create React App](https://github.com/facebook/create-react-app ).
 
-Установка и запуск
+```git clone https://github.com/alexzkv/mesto-react.git``` - клонирование проекта
 
 ```npm i``` - установка зависимостей
 
-```npm run start``` - запуск сервера
-
-```npm run build``` - запуск сборки проекта
-
-```npm run deploy``` - публикация сборки на github pages
+```npm start``` - запуск сервера
 
 ***
 
