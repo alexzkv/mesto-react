@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/mesto-react/static/css/main.b794d6d2.css",
+    "main.js": "/mesto-react/static/js/main.344d49e7.js",
+    "static/media/Inter-Medium.woff": "/mesto-react/static/media/Inter-Medium.44e343ff76a98508d309.woff",
+    "static/media/Inter-Regular.woff": "/mesto-react/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2": "/mesto-react/static/media/Inter-Medium.01f03178adde434fc9fa.woff2",
+    "static/media/Inter-Black.woff2": "/mesto-react/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/mesto-react/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/jacques-yves-cousteau.jpg": "/mesto-react/static/media/jacques-yves-cousteau.8e94371e9d2475fdfc60.jpg",
+    "static/media/logo-mesto.svg": "/mesto-react/static/media/logo-mesto.03b78ada3425e9132ff3db7ea8f4a6f6.svg",
+    "static/media/edit-like.svg": "/mesto-react/static/media/edit-like.87ed371465c7a6a1cd01.svg",
+    "index.html": "/mesto-react/index.html",
+    "static/media/delete-button.svg": "/mesto-react/static/media/delete-button.823b0cf1b0b7e9cb7cad.svg",
+    "static/media/edit-like-active.svg": "/mesto-react/static/media/edit-like-active.35948469632d0421d697.svg",
+    "static/media/close-button.svg": "/mesto-react/static/media/close-button.973e77374abfb705de40.svg",
+    "static/media/edit-button.svg": "/mesto-react/static/media/edit-button.6c7bf05444b9793fdf6e.svg",
+    "static/media/avatar-cursor.svg": "/mesto-react/static/media/avatar-cursor.a086f758840ae814ecde.svg",
+    "static/media/add-button.svg": "/mesto-react/static/media/add-button.bed8c136e13907f5eefb.svg",
+    "main.b794d6d2.css.map": "/mesto-react/static/css/main.b794d6d2.css.map",
+    "main.344d49e7.js.map": "/mesto-react/static/js/main.344d49e7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b794d6d2.css",
+    "static/js/main.344d49e7.js"
+  ]
+}
