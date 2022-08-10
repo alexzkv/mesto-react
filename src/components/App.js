@@ -4,11 +4,11 @@ import api from "../utils/Api";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
+import PopupWithConfirmation from "./PopupWithСonfirmation";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function App() {
@@ -19,8 +19,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [deletingСard, setDeletingСard] = useState(null);
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen ||
-  isAddPlacePopupOpen || selectedCard;
+  isAddPlacePopupOpen || selectedCard || setDeletingСard;
 
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getCards()])
@@ -35,12 +36,14 @@ function App() {
   function handleEditProfileClick() { setIsEditProfilePopupOpen(true) }
   function handleAddPlaceClick() { setIsAddPlacePopupOpen(true) }
   function handleCardClick(card) { setSelectedCard(card) }
+  function handleCardDelete(card) { setDeletingСard(card) }
   
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard(null);
+    setDeletingСard(null);
   }
 
   useEffect(() => {
@@ -62,14 +65,6 @@ function App() {
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards(state => state.map(c => c._id === card._id ? newCard : c));
-      })
-      .catch(err => console.log(err));
-  }
-
-  function handleCardDelete(card) {
-    api.deleteCard(card._id)
-      .then(() => {
-        setCards(state => state.filter(d => d._id !== card._id));
       })
       .catch(err => console.log(err));
   }
@@ -107,6 +102,17 @@ function App() {
     .finally(() => setIsLoading(false));
   }
 
+  function handleСonfirmDelete(card) { 
+    setIsLoading(true);
+    api.deleteCard(card._id)
+      .then(() => {
+        setCards(state => state.filter(d => d._id !== card._id));
+        closeAllPopups();
+      })
+      .catch(err => console.log(err))
+    .finally(() => setIsLoading(false));
+  }
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -121,15 +127,12 @@ function App() {
           cards={cards}
         />
         <Footer />
-        <PopupWithForm 
-          className="popup popup_type_confirm"
-          name="confirm"
-          title="Вы уверены?"
-          ariaLabel="Да"
-          textButton="Да"
+        <PopupWithConfirmation
+          card={deletingСard}
           onClose={closeAllPopups}
-        >
-        </PopupWithForm>
+          onСonfirmDelete={handleСonfirmDelete}
+          isLoading={isLoading}
+        />
         <ImagePopup
           name={"open-card"}
           card={selectedCard}
