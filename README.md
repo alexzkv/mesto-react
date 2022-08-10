@@ -2,6 +2,8 @@
 
 Одностраничный сайт адаптированный под все типы устройств с возможностью делиться своими фотографиями.
 
+**[Ссылка на проект](https://alexzkv.github.io/mesto-react/)**
+
 [Ссылка на макет проекта в Figma](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9?node-id=0%3A1)
 
 ***
